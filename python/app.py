@@ -1,7 +1,20 @@
-from fastapi import HTTPException
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from pathlib import Path
 import subprocess
+
+app = FastAPI()
+
+class Payload(BaseModel):
+    text: str
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+@app.post("/echo")
+def echo(payload: Payload):
+    return {"received": payload.text, "length": len(payload.text)}
 
 class RunReq(BaseModel):
     script: str
@@ -13,7 +26,6 @@ SCRIPTS_DIR = Path("/files/scripts").resolve()
 def run(req: RunReq):
     script_path = (SCRIPTS_DIR / req.script).resolve()
 
-    # nur /files/scripts und nur .py erlauben
     if not str(script_path).startswith(str(SCRIPTS_DIR)):
         raise HTTPException(400, "invalid path")
     if not script_path.exists() or script_path.suffix != ".py":
