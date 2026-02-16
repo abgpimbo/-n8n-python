@@ -1,0 +1,6 @@
+requests>=2.31.0
+tqdm>=4.66.0
+pandas>=2.2.0
+zeep>=4.2.1
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
