@@ -5,3 +5,7 @@ zeep>=4.2.1
 fastapi>=0.110.0
 uvicorn[standard]>=0.29.0
 reportlab>=4.1.0
+fpdf2>=2.8.0
+python-barcode>=0.16.0
+pypdf>=4.0.0
+Pillow>=9.0.0
