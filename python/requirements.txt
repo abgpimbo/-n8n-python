@@ -9,3 +9,4 @@ fpdf2>=2.8.0
 python-barcode>=0.16.0
 pypdf>=4.0.0
 Pillow>=9.0.0
+openpyxl>=3.1.0
